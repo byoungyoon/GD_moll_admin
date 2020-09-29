@@ -8,6 +8,7 @@ import java.sql.*;
 import vo.*;
 
 public class ProductDao {
+	// 이미지 업데이트 메서드
 	public void updateImage(Product product) throws Exception{
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();
@@ -23,6 +24,7 @@ public class ProductDao {
 		conn.close();
 	}
 	
+	// 제품 목록 삭제 메서드
 	public void deleteProductList(Product product) throws Exception{
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();
@@ -37,23 +39,37 @@ public class ProductDao {
 		conn.close();
 	}
 	
-	public void updateProductList(Product product) throws Exception{
+	// 제품목록 업데이트 // 조인을 한 이유는 카테고리 별 상품을 이름으로 바꾸기 위해서
+	public void updateProductList(CategoryAndProduct cap) throws Exception{	
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();
 		
-		String sql = "UPDATE product SET product_name=?, product_content=?, product_price=? WHERE product_id = ?";
+		/*
+		 * UPDATE
+		 * product p INNER JOIN category c
+		 * ON
+		 * p.category_id=c.category_id
+		 * SET
+		 * p.product_name=?, p.product_content=?, p.product_price=? c.category_name=?
+		 * WHERE
+		 * p.product_id = ?
+		 */
+		
+		String sql = "UPDATE product p INNER JOIN category c ON p.category_id=c.category_id SET p.product_name=?, p.product_content=?, p.product_price=?, c.category_name=? WHERE p.product_id = ?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		
-		stmt.setString(1, product.getProductName());
-		stmt.setString(2, product.getProductContent());
-		stmt.setInt(3, product.getProductPrice());
-		stmt.setInt(4, product.getProductId());
+		stmt.setString(1, cap.product.getProductName());
+		stmt.setString(2, cap.product.getProductContent());
+		stmt.setInt(3, cap.product.getProductPrice());
+		stmt.setString(4,cap.category.getCategoryName());
+		stmt.setInt(5, cap.product.getProductId());
 		
 		stmt.executeLargeUpdate();
 		
 		conn.close();
 	}
 	
+	// 제품 수정 버튼에서 눌러서 바꾸기 위한 메서드
 	public void updateProductSoldout(int productId, String productSoldout) throws Exception{
 		// 데이터베이스를 메소드로 호출(Connection을 출력값으로 받음)
 		DBUtil dbUtil = new DBUtil();
@@ -74,6 +90,7 @@ public class ProductDao {
 		conn.close();
 		}
 	
+	// 제품 한개를 눌렀을 때 그 정보를 보기위한 메서드
 	public CategoryAndProduct selectProductOne(CategoryAndProduct cap) throws Exception{
 		CategoryAndProduct returnCap = null;
 		
@@ -122,6 +139,7 @@ public class ProductDao {
 		return returnCap;
 	}
 	
+	// 제품을 추가하기 위한 메서드
 	public void insertProduct(Product product) throws Exception{
 		// 데이터베이스를 메소드로 호출(Connection을 출력값으로 받음)
 		DBUtil dbUtil = new DBUtil();

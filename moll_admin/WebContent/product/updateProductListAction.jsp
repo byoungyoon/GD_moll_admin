@@ -3,21 +3,26 @@
 <%@ page import="vo.*" %>
 <%
 	request.setCharacterEncoding("UTF-8");
-
+	
+	String categoryName = request.getParameter("categoryName");
 	String productName = request.getParameter("productName");
 	String productContent = request.getParameter("productContent");
 	int productPrice = Integer.parseInt(request.getParameter("productPrice"));
 	int productId = Integer.parseInt(request.getParameter("productId"));
 	
-	Product paramProduct = new Product();
-	paramProduct.setProductName(productName);
-	paramProduct.setProductContent(productContent);
-	paramProduct.setProductId(productId);
-	paramProduct.setProductPrice(productPrice);
+	CategoryAndProduct paramCap = new CategoryAndProduct();
+	paramCap.category = new Category();
+	paramCap.product = new Product();
+	
+	paramCap.category.setCategoryName(categoryName);
+	paramCap.product.setProductName(productName);
+	paramCap.product.setProductContent(productContent);
+	paramCap.product.setProductId(productId);
+	paramCap.product.setProductPrice(productPrice);
 	
 	ProductDao productDao = new ProductDao();
 	
-	productDao.updateProductList(paramProduct);
+	productDao.updateProductList(paramCap);
 	
 	response.sendRedirect(request.getContextPath()+"/product/productOne.jsp?productId="+productId);
 %>

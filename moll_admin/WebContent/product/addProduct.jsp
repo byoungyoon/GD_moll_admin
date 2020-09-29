@@ -37,7 +37,7 @@
 			
 			<table class="table table-dark">
 				<tr>
-					<td>category_id</td>
+					<td>category_name</td>
 					<td>
 						<select name="categoryId">
 							<option value="">선택없음</option>

@@ -49,7 +49,7 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text"><i class="fa fa-user" style="font-size:30px"></i></span>
 					</div>
-					<input type="text" class="form-control" placeholder="UserEmail" name="loginEmail" style="font-size:30px">
+					<input type="text" class="form-control" placeholder="UserEmail" name="loginEmail" value="admin@google.com" style="font-size:30px">
 				</div>
 			
 				<!-- 비닐번호 text를 그룹으로 지정하는 클래스 -->
@@ -57,7 +57,7 @@
 					<div class="input-group-append">
 						<span class="input-group-text"><i class='fas fa-key' style='font-size:30px'></i></span>
 					</div>
-					<input type="password" class="form-control" placeholder="******" name="loginPw" style='font-size:30px'>
+					<input type="password" class="form-control" placeholder="******" name="loginPw" value="1234" style='font-size:30px'>
 				</div>
 				
 			<div class="text-right">
