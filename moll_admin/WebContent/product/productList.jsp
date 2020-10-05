@@ -79,8 +79,7 @@
  		</form>
  		
  		<br>
-
- 		<!-- 한 줄을 12개로 나누는 class -->
+ 		
  		<table class="table table-dark">
  			<tr>
  				<th>product_id</th>

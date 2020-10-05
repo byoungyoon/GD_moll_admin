@@ -25,6 +25,9 @@
 				<a class="nav-link btn btn-outline-secondary" href="<%=request.getContextPath()%>/notice/noticeList.jsp">공지 관리</a>
 			</li>
 			<li class="nav-item">
+				<a class="nav-link btn btn-outline-secondary" href="<%=request.getContextPath()%>/shopping/shoppingList.jsp">장바구니 관리</a>
+			</li>
+			<li class="nav-item">
 				<a class="nav-link btn btn-outline-secondary" href="<%=request.getContextPath()%>/member/memberList.jsp">회원 관리</a>
 			</li>
 		</ul>
