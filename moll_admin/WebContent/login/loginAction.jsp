@@ -2,10 +2,7 @@
 <%@ page import="vo.*" %>
 <%@ page import="dao.*" %>
 <%	
-	// 에러값으로 로그인 실패
-	String err = "login failed";	
-	String test = "test";
-	request.getParameter("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 	
 	// 로그인한 id와 pw를 받아온다
 	String loginEmail = request.getParameter("loginEmail");
@@ -53,7 +50,7 @@
 	}
 	
 	// admin도 member도 아니라면 err값 출력
-	response.sendRedirect(request.getContextPath() + "/login/login.jsp?err=" + err);
+	response.sendRedirect(request.getContextPath() + "/login/login.jsp");
 %>
 
 
