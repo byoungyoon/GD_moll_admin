@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>addProduct.jsp</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <%
@@ -20,16 +21,28 @@
 	CategoryDao categoryDao = new CategoryDao();
 	ArrayList<Category> categoryList = categoryDao.selectCategoryList();
 %>
+<script>
+	$(document).ready(function() {
+		$("#btn").click(function() {
+			if($("#categoryId").val() == ""){
+				$("#err").text("카테고리 이름을 선택하여 주세요");
+				return;
+			} else if($("#productName").val().length < 1){
+				$("#err").text("상품의 이름을 입력하여 주세요");
+				return;
+			}
+			$("#addProductForm").submit();
+		});
+	});
+</script>
+
 	<div class="container">
 		<jsp:include page="/inc/menu.jsp"></jsp:include>
 		<br>
-		<form method="post" action="/moll_admin/product/addProductAction.jsp">
+		<form id="addProductForm" method="post" action="/moll_admin/product/addProductAction.jsp">
 			<div class="row">	
 				<div class="col-sm-3">
 					<h3>상품 추가</h3>
-				</div>
-				<div class="col-sm-9 text-right">
-					<button type="submit" class="btn btn-dark">추가</button>
 				</div>
 			</div>
 			
@@ -39,7 +52,7 @@
 				<tr>
 					<td>category_name</td>
 					<td>
-						<select name="categoryId">
+						<select name="categoryId" id="categoryId">
 							<option value="">선택없음</option>
 						<%
 							for(Category c : categoryList){
@@ -54,7 +67,7 @@
 				
 				<tr>
 					<td>product_name</td>
-					<td><input type="text" name= "productName"></td>			
+					<td><input type="text" name= "productName" id="productName"></td>			
 				</tr>
 				
 				<tr>
@@ -77,6 +90,16 @@
 					</td>			
 				</tr>
 			</table>
+			<div class="row">
+				<div class="col-sm-12 text-right">
+					<button type="button" id="btn" class="btn btn-dark">추가</button>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div id="err" class="col-sm-12 text-right text-danger">
+				</div>
+			</div>
 		</form>
 	</div>
 </body>

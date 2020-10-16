@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <%
@@ -14,17 +15,28 @@
 		return;
 	}
 %>
+<script>
+	$(document).ready(function() {
+		$("#btn").click(function(){
+			if($("#categoryName").val().length < 1){
+				$("#err").text("카테고리 이름을 입력해 주세요");
+				return
+			}
+			$("#addCategoryForm").submit();
+		});
+	});
+</script>
 	
 	<div class="container">
 		<jsp:include page="/inc/menu.jsp"></jsp:include>
 		<br>
 			
  		 <h3>카테고리 입력</h3>
- 		 <form method="post" action="<%=request.getContextPath() %>/category/addCategoryAction.jsp">
+ 		 <form id="addCategoryForm" method="post" action="<%=request.getContextPath() %>/category/addCategoryAction.jsp">
 	 		 <table class="table table-dark">
 	 		 	<tr>
 	 		 		<th>category_name</th>
-	 		 		<td><input type="text" name="categoryName"></td>
+	 		 		<td><input type="text" id="categoryName" name="categoryName"></td>
 	 		 	</tr>
 	 		 	
 	 		 	<tr>
@@ -39,7 +51,12 @@
 	 		 </table>
 	 		 <div class="row">
 	 		 	<div class="col-sm-12 text-right">
-	 		 		<button type="submit" class="btn btn-dark">카테고리 추가</button>
+	 		 		<button type="button" id="btn" class="btn btn-dark">카테고리 추가</button>
+	 		 	</div>
+	 		 </div>
+	 		 
+	 		 <div class="row">
+	 		 	<div id="err" class="col-sm-12 text-right text-danger">
 	 		 	</div>
 	 		 </div>
  		 </form>
