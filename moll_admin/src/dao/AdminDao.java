@@ -28,6 +28,7 @@ public class AdminDao {
 			}
 			
 			conn.close();
+			rs.close();
 			
 			return returnLogin;
 		}

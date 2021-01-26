@@ -12,7 +12,7 @@
 <body>
 <%
 	if(session.getAttribute("adminLogin") == null){
-		response.sendRedirect("/moll_admin/login/login.jsp");
+		response.sendRedirect(request.getContextPath()+"/login/login.jsp");
 		return;
 	}	
 	

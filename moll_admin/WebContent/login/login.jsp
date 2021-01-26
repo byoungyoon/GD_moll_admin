@@ -32,7 +32,7 @@
 	// 세션 입력이 되어있다면 login.jsp는 생략된다
 	if(session.getAttribute("adminLogin") != null || session.getAttribute("memberLogin") != null){
 		System.out.println("이미 로그인이 되어 있습니다");
-		response.sendRedirect("/moll/mollIndex.jsp");
+		response.sendRedirect(request.getContextPath()+"/index.jsp");
 		return;
 	}
 	
@@ -43,7 +43,7 @@
 	<div class="container">
 		<br><br><br>
 		<!-- 사이트 이름 -->
-		<a href="/moll/mollIndex.jsp" class="text-dark"><h1 class="font-weight-bold & text-center">Goodee Shop</h1></a>
+		<a href="#" class="text-dark"><h1 class="font-weight-bold & text-center">Goodee Shop</h1></a>
 		<br><br><br><br><br>
 
 		<div class="row">
@@ -70,7 +70,6 @@
 				</div>
 				
 			<div class="text-right">	
-				<a href="<%=request.getContextPath() %>/login/createLogin.jsp" class="btn btn-outline-secondary" style='font-size:25px'>회원가입</a>
 				<button type="button" id="btn" class="btn btn-outline-secondary" style='font-size:25px'>로그인</button>
 			</div>
 				<!-- 색깔 발깐색  에러 출력-->

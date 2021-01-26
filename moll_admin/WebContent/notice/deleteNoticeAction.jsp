@@ -4,7 +4,7 @@
 <%
 	//사용자가 관리자 일때만 들어올수 있는 사이트 다른 이용자 일 경우 return하여 mollIndex로
 	if(session.getAttribute("adminLogin") == null){
-		response.sendRedirect("/moll_admin/login/login.jsp");
+		response.sendRedirect(request.getContextPath()+"/login/login.jsp");
 		return;
 	}
 

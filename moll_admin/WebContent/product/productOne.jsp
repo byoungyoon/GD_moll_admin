@@ -12,7 +12,7 @@
 <%
 	// 관리자만 접근 가능
 	if(session.getAttribute("adminLogin") == null){
-		response.sendRedirect("/moll_admin/login/login.jsp");
+		response.sendRedirect(request.getContextPath()+"/login/login.jsp");
 		return;
 	}
 	// 제품이름 가져옴

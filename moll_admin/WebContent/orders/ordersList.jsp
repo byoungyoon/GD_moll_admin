@@ -18,7 +18,7 @@
 <%
 	//사용자가 관리자 일때만 들어올수 있는 사이트 다른 이용자 일 경우 return하여 mollIndex로
  	if(session.getAttribute("adminLogin") == null){
- 		response.sendRedirect("/moll_admin/login/login.jsp");
+ 		response.sendRedirect(request.getContextPath()+"/login/login.jsp");
  		return;
  	}
   	request.setCharacterEncoding("UTF-8");
@@ -46,7 +46,7 @@
 		<br>
  		<h3>주문 목록</h3>
  		
- 		<form method="post" action="/moll_admin/orders/ordersList.jsp"> 
+ 		<form method="post" action="<%=request.getContextPath() %>/orders/ordersList.jsp"> 
  			<!-- 선택 항목 -->
  			<div class="row">
  				<div class="col-sm-3">

@@ -5,7 +5,10 @@
  
  	<div class="row">
 		<!-- 12분할 중 3개를 제목 -->	
-		<div class="col-sm-3"><a href="/moll/mollIndex.jsp" class="text-dark"><h1>Goodee Shop</h1></a></div>
+		<div class="col-sm-3"><a href="<%=request.getContextPath()%>/index.jsp" class="text-dark"><h1>Goodee Shop</h1></a></div>
+		<div class="col-sm-9">
+			<div class="text-right" style="margin-top:10px"><a href="<%=request.getContextPath()%>/login/logoutAction.jsp" class="btn btn-dark">로그아웃</a></div>
+		</div>
 	</div>
 		<!-- flex 브투스트랩 , reverse반대로, bg 배경, text 색깔 -->
   

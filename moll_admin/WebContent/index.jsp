@@ -14,7 +14,7 @@
 <body>
 	<%
 		if(session.getAttribute("adminLogin") == null){
-			response.sendRedirect("/moll_admin/login/login.jsp");
+			response.sendRedirect(request.getContextPath()+"/login/login.jsp");
 			return;
 		}
 	%>
@@ -35,10 +35,8 @@
 				<ul>
 					<li>이 프로젝트는 한달만에 모델1 방식으로 제작한 쇼핑물 프로젝트이다. <br> 크게는 관리자와 사용자로 나눌 수 있다.</li>
 					<br>
-					<li>먼저 메인 홈페이지에서 사용자표시를 누를경우 관리자는 관리자페이지로 사용자는 사용자 페이지로 간다.</li>
-					<br>
 					<li>관리자 페이지에 대해 설명하면 관리자는 카테고리, 상품, 공지 등을 관리를 할 수 있고, 전체적인 틀을 확인 할 수 있다. 이 중 추가와 삭제 수정이 자유로운 곳은 카테고리, 상품, 공지이다. 그 이유는 
-						 장바구니와 구매 목록을 관리자가 삭제하는 것은 내가 생각하기로 이상하다 생각하여 제외하였다.
+						 장바구니와 구매 목록을 관리자가 삭제하는 것은 이상하다 생각하여 제외하였다.
 					</li>
 					<br>
 					<li>

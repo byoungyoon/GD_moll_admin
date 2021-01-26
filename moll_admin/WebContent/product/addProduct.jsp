@@ -14,7 +14,7 @@
 <body>
 <%
 	if(session.getAttribute("adminLogin") == null){
-		response.sendRedirect("/moll_admin/login/login.jsp");
+		response.sendRedirect(request.getContextPath()+"/login/login.jsp");
 		return;
 	}
 		
@@ -39,7 +39,7 @@
 	<div class="container">
 		<jsp:include page="/inc/menu.jsp"></jsp:include>
 		<br>
-		<form id="addProductForm" method="post" action="/moll_admin/product/addProductAction.jsp">
+		<form id="addProductForm" method="post" action="<%=request.getContextPath() %>/product/addProductAction.jsp">
 			<div class="row">	
 				<div class="col-sm-3">
 					<h3>상품 추가</h3>

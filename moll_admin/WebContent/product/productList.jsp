@@ -13,7 +13,7 @@
 	<%
 		// 로그인 세션값이 없을 경우 login 페이지로 돌아감
 		if(session.getAttribute("adminLogin") == null){
-			response.sendRedirect("/moll_admin/login/login.jsp");
+			response.sendRedirect(request.getContextPath()+"/login/login.jsp");
 			return;
 		}
 		
